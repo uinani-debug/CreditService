@@ -22,8 +22,7 @@ namespace CreditLibrary.API.Services
 
             //  connstring = "Server=192.168.0.164;Database=maecbsdb;user=SA;Password=TCSuser1123;Trusted_Connection=True;";
             connstring = "Server=192.168.0.164;Database=maecbsdb;user=SA;Password=TCSuser1123;";
-        }
-
+        }  
         public bool CreditAmount(Credit req)
         {
             using (var c = Connection)
@@ -33,7 +32,7 @@ namespace CreditLibrary.API.Services
                 p.Add("accountNumber", req.AccountIdentifier, DbType.String, ParameterDirection.Input);
                 p.Add("amount", req.TransferAmount, DbType.Double, ParameterDirection.Input);
 
-                string query = "update tb_mae_account set [amount]=[amount] + @amount where account_identifier= @accountNumber";
+                string query = "update tb_mae_mort_account set [available_balance]= [available_balance] + @amount, [current_balance]=[current_balance] + @amount where account_identifier= @accountNumber";
                 var x = c.Query(query,p);
                                 
                 c.Close();
