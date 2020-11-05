@@ -46,6 +46,25 @@ namespace CreditLibrary.API.Controllers
         }
 
 
+        [Route("TestOracle")]
+        [HttpGet]
+        public ActionResult<string> Test()
+        {
+            var CreditRequest = new Credit
+            {
+                AccountIdentifier = "54678947",
+                PaymentReference = "test credit oracle",
+                TransferAmount = 100
+            };
+
+            if (Request != null)
+            {
+                _PaymentLibraryRepository.CreditAmount(CreditRequest);
+            }
+
+                return Accepted();
+        }
+
 
         private async void SubscribeEvent()
         {
