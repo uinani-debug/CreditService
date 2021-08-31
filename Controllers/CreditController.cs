@@ -53,7 +53,7 @@ namespace CreditLibrary.API.Controllers
             var CreditRequest = new Credit
             {
                 AccountIdentifier = "54678947",
-                PaymentReference = "test credit oracle",
+                PaymentReference = "test credit oracle1",
                 TransferAmount = 100
             };
 
